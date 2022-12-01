@@ -1,4 +1,4 @@
-import HomeLayout from '../layout/Home';
+import HomeLayout from '../layout/HomeLayout';
 
 const IndexPage = () => <HomeLayout>Home Page</HomeLayout>;
 

@@ -1,5 +1,7 @@
+import classes from './Main.module.scss'
+
 const Main = ({ children }: { children: React.ReactNode }) => (
-  <div>{children}</div>
+  <div className={classes['main']}>{children}</div>
 );
 
 export default Main;
