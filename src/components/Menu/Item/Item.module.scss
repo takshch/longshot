@@ -1,0 +1,19 @@
+.menu-item {
+  padding: 5px 8px;
+  background-color: #efefef;
+
+  > .name {
+    font-size: 1.2em;
+    color: gray;
+  }
+
+  > .sub-item {
+    display: flex;
+    flex-direction: column;
+
+    > .menu-item {
+      padding-left: 0.85em;
+      font-size: 0.95em;
+    }
+  }
+}
