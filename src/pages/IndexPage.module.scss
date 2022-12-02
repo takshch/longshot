@@ -1,0 +1,23 @@
+:root {
+  color: gray;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 5px;
+}
+
+.keyword-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+
+.color-black {
+  color: #000;
+}
+
+.font-short {
+  font-size: 0.9em;
+}
