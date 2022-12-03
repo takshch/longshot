@@ -5,6 +5,7 @@ import Intent from '../../components/Intent/Intent';
 import { humanizeNumber } from '../../helpers/humanizeNumber';
 import { GetApiResponseType } from '../../types/GetApiResponseType';
 import Table from './Table';
+import { filterCols, filterHeadings } from './TableSection/filterData';
 
 const TableSectionDiv = styled.div`
   display: flex;
@@ -59,7 +60,7 @@ const TableSection = ({ data }: TableSectionProps) => {
   useEffect(() => {
     const key = DATA_COLUMN[selectedChoice];
     const tableData = data[key];
-    setTableData(tableData);
+    setTableData(filterCols(tableData));
   }, [data, selectedChoice]);
 
   const selectChoice = (choice: number) => {
@@ -77,7 +78,7 @@ const TableSection = ({ data }: TableSectionProps) => {
       </div>
       {tableData && (
         <Table
-          columnNames={columnNames}
+          columnNames={filterHeadings(columnNames)}
           rows={tableData}
           columnRenderers={COLUMN_RENDERERS}
         />
