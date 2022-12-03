@@ -21,3 +21,25 @@
 .font-short {
   font-size: 0.9em;
 }
+
+.main {
+  display: flex;
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 200px;
+  gap: 20px;
+}
+
+.intent-result-cpc-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .cpc-comm-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
