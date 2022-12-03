@@ -7,6 +7,7 @@ const Div = styled.div`
   border-radius: 4px;
   padding: 5px;
   width: fit-content;
+  background-color: rgb(229 231 235);
 `;
 
 interface ChoiceType {

@@ -6,7 +6,7 @@ import Divider from '../components/Common/Divider/Divider';
 import { humanizeNumber } from '../helpers/humanizeNumber';
 import HomeLayout from '../layout/HomeLayout';
 import { VolumeAndKeywordCard } from '../pages-component/IndexPage/Cards/VolumeAndKeywordCard';
-import Table from '../pages-component/IndexPage/Table/Table';
+import TableSection from '../pages-component/IndexPage/TableSection';
 import { GetApiResponseType } from '../types/GetApiResponseType';
 import classes from './IndexPage.module.scss';
 
@@ -73,7 +73,7 @@ const IndexPage = () => {
                 </Card>
               </div>
             </div>
-            <Table data={data} />
+            <TableSection data={data} />
           </div>
         </>
       )}
