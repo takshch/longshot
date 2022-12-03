@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Column from './Table/Column';
 
 const TableElement = styled.table`
   border-spacing: unset;
@@ -44,12 +45,21 @@ const BodyRow = styled.tr`
   }
 `;
 
+export type ColumnRenderersType = {
+  [index: number]: (value: any) => JSX.Element | string;
+};
+
 interface TableProps {
   columnNames: string[];
   rows: string[][];
+  columnRenderers?: ColumnRenderersType;
 }
 
-export default function Table({ columnNames, rows }: TableProps) {
+export default function Table({
+  columnNames,
+  rows,
+  columnRenderers = {},
+}: TableProps) {
   return (
     <TableElement>
       <thead>
@@ -62,8 +72,14 @@ export default function Table({ columnNames, rows }: TableProps) {
       <tbody>
         {rows.map((row, index) => (
           <BodyRow key={index}>
-            {row.map((column, index) => (
-              <BodyColumn key={index}>{column}</BodyColumn>
+            {row.map((value, index) => (
+              <BodyColumn key={index}>
+                <Column
+                  index={index}
+                  value={value}
+                  columnRenderers={columnRenderers}
+                />
+              </BodyColumn>
             ))}
           </BodyRow>
         ))}

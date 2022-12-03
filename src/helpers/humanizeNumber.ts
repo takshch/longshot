@@ -10,11 +10,13 @@ export const humanizeNumber = (num: string) => {
 
   if (count < 3) return num;
 
+  count = count - 2
+
   for (let index = 0; index < count; index++) {
     zeroSplits.pop();
   }
 
   const leadingNum = zeroSplits.join('') || 0
 
-  return `${leadingNum}${UNITS[count - 3]}`;
+  return `${leadingNum}${UNITS[count - 3] || ''}`;
 }

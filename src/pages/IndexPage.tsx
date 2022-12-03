@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Badge from '../components/Common/Badge/Badge';
 import Card from '../components/Common/Card/Card';
 import Divider from '../components/Common/Divider/Divider';
+import Intent from '../components/Intent/Intent';
 import { humanizeNumber } from '../helpers/humanizeNumber';
 import HomeLayout from '../layout/HomeLayout';
 import { VolumeAndKeywordCard } from '../pages-component/IndexPage/Cards/VolumeAndKeywordCard';
@@ -53,7 +53,7 @@ const IndexPage = () => {
                 <Card>
                   <div>Intent</div>
                   <br />
-                  <Badge text={'Commerical'} />
+                  <Intent number={0} />
                 </Card>
                 <Card>
                   <div>Results</div>

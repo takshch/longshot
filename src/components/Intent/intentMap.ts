@@ -1,6 +1,6 @@
 export type IntentType = {
   type: string
-  hoverText: string
+  hoverText?: string
   color: {
     bg: string
     text: string

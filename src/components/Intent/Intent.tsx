@@ -1,10 +1,18 @@
 import Badge from '../Common/Badge/Badge';
-import { IntentType } from './intentMap';
+import { intentMap } from './intentMap';
 
-const Intent = ({ type, color }: IntentType) => {
+type IntentType = {
+  number: number;
+  textSmall?: boolean;
+};
+
+const Intent = ({ number, textSmall }: IntentType) => {
+  const { type, color } = intentMap[number];
+  const text = textSmall ? type[0] : type;
+
   return (
     <Badge
-      text={type}
+      text={text}
       bgColor={color.bg}
       textColor={color.text}
       hoverColor={color.hover}

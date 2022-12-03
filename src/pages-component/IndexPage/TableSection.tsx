@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Segmented from '../../components/Common/Segmented/Segmented';
+import Intent from '../../components/Intent/Intent';
+import { humanizeNumber } from '../../helpers/humanizeNumber';
 import { GetApiResponseType } from '../../types/GetApiResponseType';
 import Table from './Table';
 
@@ -41,7 +43,12 @@ const DATA_COLUMN: DataColumnType = [
   'raw_question_data',
 ];
 
-export type TableData = string[][]
+const COLUMN_RENDERERS = {
+  2: (value: number) => <Intent number={value} textSmall={true} />,
+  5: (value: string) => humanizeNumber(value),
+};
+
+export type TableData = string[][];
 
 const TableSection = ({ data }: TableSectionProps) => {
   const { columnNames } = data;
@@ -68,7 +75,13 @@ const TableSection = ({ data }: TableSectionProps) => {
           onSelect={selectChoice}
         />
       </div>
-      {tableData && <Table columnNames={columnNames} rows={tableData} />}
+      {tableData && (
+        <Table
+          columnNames={columnNames}
+          rows={tableData}
+          columnRenderers={COLUMN_RENDERERS}
+        />
+      )}
     </TableSectionDiv>
   );
 };
