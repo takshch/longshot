@@ -6,8 +6,8 @@ const MenuItem = ({ name, subItems }: ItemType) => (
     <span className={classes['name']}>{name}</span>
     {subItems && subItems.length > 0 && (
       <div className={classes['sub-item']}>
-        {subItems.map((item) => (
-          <MenuItem {...item} />
+        {subItems.map((item, index) => (
+          <MenuItem {...item} key={index} />
         ))}
       </div>
     )}

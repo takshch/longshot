@@ -14,11 +14,11 @@ const bottomItems: ItemType[] = [
 
 const Menu = () => (
   <div className={classes['menu']}>
-    {topItems.map((item) => (
-      <MenuItem {...item} />
+    {topItems.map((item, index) => (
+      <MenuItem {...item} key={`top-${index}`} />
     ))}
-    {bottomItems.map((item) => (
-      <MenuItem {...item} />
+    {bottomItems.map((item, index) => (
+      <MenuItem {...item} key={`bottom-${index}`} />
     ))}
   </div>
 );
