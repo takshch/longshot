@@ -30,8 +30,6 @@ const Table = ({ data }: TableProps) => {
     setSelectedChoice(choice);
   }
 
-  console.log(selectedChoice);
-
   return (
     <Segmented
       choices={CHOICES}

@@ -1,51 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import SegmentedItem from './SegmentedItem';
 
-type SegmentedItemProps = {
-  isSelected: boolean;
-  isDisabled?: boolean;
-  onClick: Function;
-  role: string;
-};
-
-const SegmentedItem = styled.div<SegmentedItemProps>`
-  padding: 10px;
-  text-align: center;
-
-  ${(props) =>
-    props.isDisabled &&
-    css`
-      background-color: rgb(229 231 235);
-      color: #000;
-    `};
-
-  ${(props) =>
-    props.isSelected &&
-    css`
-      background-color: rgb(75 85 99);
-      color: #fff;
-    `};
+const Div = styled.div`
+  display: inline-flex;
+  border: 2px solid rgb(229 231 235);
+  border-radius: 4px;
+  padding: 5px;
+  width: fit-content;
 `;
-
-interface ItemProps {
-  text: string;
-  choice: number;
-  isSelected: boolean;
-  isDisabled?: boolean;
-  onClick: Function;
-}
-
-function Item({ choice, text, isSelected, isDisabled, onClick }: ItemProps) {
-  return (
-    <SegmentedItem
-      isSelected={isSelected}
-      isDisabled={isDisabled}
-      role="button"
-      onClick={() => !isDisabled && onClick()}
-    >
-      {text}
-    </SegmentedItem>
-  );
-}
 
 interface ChoiceType {
   id: number;
@@ -71,18 +33,17 @@ function Segmented({
   const isDisabled = (choice: number) => disabled || disabledChoice === choice;
 
   return (
-    <div>
+    <Div>
       {choices.map(({ id, text }) => (
-        <Item
+        <SegmentedItem
           key={id}
-          choice={id}
           text={text}
           isSelected={isSelected(id)}
           isDisabled={isDisabled(id)}
           onClick={() => onSelect(id)}
         />
       ))}
-    </div>
+    </Div>
   );
 }
 
