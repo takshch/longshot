@@ -21,6 +21,7 @@ const HeadColumn = styled.th`
 const BodyColumn = styled.td`
   padding: 10px;
   background-color: #fff;
+  border-bottom: 2px solid gray;
   &:first-child {
     border-left: 2px solid gray;
   }
@@ -53,16 +54,16 @@ export default function Table({ columnNames, rows }: TableProps) {
     <TableElement>
       <thead>
         <tr>
-          {columnNames.map((name) => (
-            <HeadColumn>{name}</HeadColumn>
+          {columnNames.map((name, index) => (
+            <HeadColumn key={index}>{name}</HeadColumn>
           ))}
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <BodyRow>
-            {row.map((column) => (
-              <BodyColumn>{column}</BodyColumn>
+        {rows.map((row, index) => (
+          <BodyRow key={index}>
+            {row.map((column, index) => (
+              <BodyColumn key={index}>{column}</BodyColumn>
             ))}
           </BodyRow>
         ))}

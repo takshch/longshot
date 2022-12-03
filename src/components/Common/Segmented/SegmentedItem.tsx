@@ -10,6 +10,7 @@ type DivProps = {
 const Div = styled.div<DivProps>`
   padding: 10px;
   text-align: center;
+  cursor: pointer;
 
   ${(props) =>
     props.isDisabled &&

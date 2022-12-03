@@ -1,7 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Segmented from '../../components/Common/Segmented/Segmented';
 import { GetApiResponseType } from '../../types/GetApiResponseType';
 import Table from './Table';
+
+const TableSectionDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
 
 type TableSectionProps = {
   data: GetApiResponseType;
@@ -9,30 +16,51 @@ type TableSectionProps = {
 
 const CHOICES = [
   {
-    id: 1,
+    id: 0,
     text: 'Broad Match',
   },
   {
-    id: 2,
+    id: 1,
     text: 'Related',
   },
   {
-    id: 3,
+    id: 2,
     text: 'Questions',
   },
 ];
 
+type DataColumnType = [
+  keyof Pick<GetApiResponseType, 'raw_broadmatch_data'>,
+  keyof Pick<GetApiResponseType, 'raw_related_data'>,
+  keyof Pick<GetApiResponseType, 'raw_question_data'>
+];
+
+const DATA_COLUMN: DataColumnType = [
+  'raw_broadmatch_data',
+  'raw_related_data',
+  'raw_question_data',
+];
+
+export type TableData = string[][]
+
 const TableSection = ({ data }: TableSectionProps) => {
-  const { columnNames, raw_broadmatch_data } = data;
+  const { columnNames } = data;
 
   const [selectedChoice, setSelectedChoice] = useState<number>(CHOICES[0].id);
+  const [tableData, setTableData] = useState<TableData>();
+
+  useEffect(() => {
+    const key = DATA_COLUMN[selectedChoice];
+    const tableData = data[key];
+    setTableData(tableData);
+  }, [data, selectedChoice]);
 
   const selectChoice = (choice: number) => {
     setSelectedChoice(choice);
   };
 
   return (
-    <div>
+    <TableSectionDiv>
       <div>
         <Segmented
           choices={CHOICES}
@@ -40,8 +68,8 @@ const TableSection = ({ data }: TableSectionProps) => {
           onSelect={selectChoice}
         />
       </div>
-      <Table columnNames={columnNames} rows={raw_broadmatch_data} />
-    </div>
+      {tableData && <Table columnNames={columnNames} rows={tableData} />}
+    </TableSectionDiv>
   );
 };
 
