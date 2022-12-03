@@ -6,7 +6,7 @@
   justify-content: center;
 
   > .name {
-    width: 100%;
+    width: calc(100% - 16px);
     padding: 5px 8px;
     font-size: 1.2em;
     color: gray;
@@ -23,6 +23,7 @@
 
     > .menu-item {
       > .name {
+        width: calc(100% - 8px - 1.3em);
         padding-left: 1.3em;
         font-size: 1em;
       }
