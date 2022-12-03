@@ -7,7 +7,7 @@ type IntentType = {
 };
 
 const Intent = ({ number, textSmall }: IntentType) => {
-  const { type, color } = intentMap[number];
+  const { type, color } = intentMap[number % 3];
   const text = textSmall ? type[0] : type;
 
   return (
